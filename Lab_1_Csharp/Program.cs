@@ -4,12 +4,17 @@ namespace Lab_1_Csharp
 {
     class Game
     {
-        public int rows;
-        private int columns;
-        private int ships;
-        private int[,] field;
-        private int attempts;
 
+        public int rows;
+        int columns;
+        int ships;
+        int[,] field;
+        int attempts;
+
+        /// <summary>
+        /// TryParse to enter size
+        /// </summary>
+        /// <returns> Field size in range from 4 to 10 </returns>
         static int InputDimension()
         {
             Console.WriteLine("Enter a size of the field");
@@ -24,6 +29,11 @@ namespace Lab_1_Csharp
             return number;
         }
 
+        /// <summary>
+        /// Generate field with:
+        /// zero(empty point);
+        /// one(ship point);
+        /// </summary>
         void GenerateField()
         {
             for (int i = 0; i < rows; i++)
@@ -92,6 +102,10 @@ namespace Lab_1_Csharp
             }
         }
 
+        /// <summary>
+        /// TryParse to enter coordinate
+        /// </summary>
+        /// <returns>number of coordinate in range from 1 to count of rows</returns>
         int InputCoordinate()
         {
             int number;
@@ -105,6 +119,10 @@ namespace Lab_1_Csharp
             return number;
         }
 
+        /// <summary>
+        /// TryParse to enter amount of attemts
+        /// Reducing to max of field`s points
+        /// </summary>
         void Attempts()
         {
             Console.WriteLine("How many attempts do you want?");
@@ -122,6 +140,9 @@ namespace Lab_1_Csharp
             }
         }
 
+        /// <summary>
+        /// Innit of GameClass
+        /// </summary>
         public Game()
         {
             rows = InputDimension();
@@ -132,6 +153,9 @@ namespace Lab_1_Csharp
             Attempts();
         }
 
+        /// <summary>
+        /// Drawing according to the number field
+        /// </summary>
         void Draw()
         {
             Console.Write("   ");
@@ -165,6 +189,10 @@ namespace Lab_1_Csharp
             }
         }
 
+        /// <summary>
+        /// checking for point equils one
+        /// </summary>
+        /// <returns>amount of alive points</returns>
         int CountLiveShips()
         {
             int liveShips = 0;
@@ -181,6 +209,11 @@ namespace Lab_1_Csharp
             return liveShips;
         }
 
+        /// <summary>
+        /// Changing from 0 to 3 if you missed
+        /// Chenging from 1 to 2 if you take it
+        /// </summary>
+        /// <returns>amount of attempts after user shooting</returns>
         public int Shoot()
         {
             Draw();
@@ -216,12 +249,15 @@ namespace Lab_1_Csharp
     {
         static void Main()
         {
+            
             Game game= new Game();
             do
             {
+                
                 Console.WriteLine("Take your shoot");
             }
             while (game.Shoot() > 0);
+            
             Console.WriteLine("Thanks for a game");
             Console.WriteLine("See you next time");
         }
